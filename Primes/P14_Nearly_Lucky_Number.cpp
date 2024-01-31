@@ -1,13 +1,24 @@
 #include<iostream>
 #include<bitset>
+#define int int64_t
 #include<string>
 using namespace std;
-int main(){
-    long long n;
+int32_t main(){
+    int n;
     cin>>n;
     string t= to_string(n);
-    long long count=0;
-    for(long long i=0;i<t.length();i++){
+    int count=0;
+   
+    for(int i=0;i<t.length();i++){
+      if(t[i]=='7' || t[i]=='4')count++;
+    }
+     if(count==0)cout<<"NO"<<endl;
+    else if(count==7|| count==4)cout<<"YES"<<endl;
+    
+    else cout<<"NO"<<endl;
+}
+/*
+/* for(long long i=0;i<t.length();i++){
       if(t[i]=='7'){
         count++;
       }
@@ -28,5 +39,4 @@ int main(){
             return 0;
         }
     }
-    cout<<"YES"<<endl;
-}
+    cout<<"YES"<<endl;*/
