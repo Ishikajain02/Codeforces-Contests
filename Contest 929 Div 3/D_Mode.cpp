@@ -13,19 +13,23 @@ int main(){
    for(int i=0;i<n;i++){
     cin>>vc[i];
    }
-   int mo=vc[0]%vc[1];
-   for(int i=2;i<n;i++){
-    mo%=vc[i];
-   }
-   sort(vc.rbegin(),vc.rend());
-   int mod2=vc[0]%vc[1];
-   for(int i=2;i<n;i++){
-    mod2%=vc[i];
-   }
-   if(mo!=0 || mod2!=0){
+   
+   sort(vc.begin(),vc.end());
+   if(vc[0]!=vc[1]){
     cout<<"YES"<<endl;
+    continue;
    }
-   else cout<<"NO"<<endl;
-
+   int i;
+   bool f=false;
+   for( i=2;i<n;i++){
+    if(vc[i]%vc[0]!=0){
+        cout<<"YES"<<endl;
+        f=true;
+        break;
+    }
+   }
+   //if(i==n)cout<<"YES"<<endl;
+   if(!f)cout<<"NO"<<endl;
+   
   }
 }
