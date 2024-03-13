@@ -3,14 +3,28 @@
 #include<vector>
 #include<algorithm>
 #include<deque>
+#include<climits>
 using namespace std;
 void inp(vector<int>&v){
  for(int i=0;i<3;i++){
         cin>>v[i];
     }
 }
+int maxi(vector<int>&v){
+    int m=0;
+    for(int i=0;i<v.size();i++){
+        m=max(m,v[i]);
+    }
+    return m;
+}
+void outp(vector<int>&v){
+    for(int i=0;i<v.size();i++){
+        cout<<v[i]<<" ";
+    }
+    cout<<endl;
+}
 int main(){
-int n,d;
+/*int n,d;
 cin>>n>>d;
 vector<int>vc(n,0);
 for(int i=0;i<n;i++){
@@ -33,4 +47,25 @@ while (!q.empty()) {
        if(val==0) team++;
     }
 cout<<team<<endl;
+*/
+int t;
+cin>>t;
+while(t--){
+  int a,b,c;
+  cin>>a>>b>>c;
+  if(a<=max(b,c)){
+    cout<<max(b,c)-a+1<<" ";
+  }
+  else cout<<0<<" ";
+  if(b<=max(a,c)){
+    cout<<max(a,c)-b+1<<" ";
+  }
+  else cout<<0<<" ";
+  if(c<=max(a,b)){
+    cout<<max(a,b)-c+1;
+  }
+  else cout<<0<<" ";
+  cout<<endl;
+}
+
 }
