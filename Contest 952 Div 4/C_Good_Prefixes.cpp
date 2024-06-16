@@ -1,8 +1,9 @@
 #include<iostream>
 #include<vector>
 #include<algorithm>
+#define int int64_t
 using namespace std;
-int main(){
+int32_t main(){
     int t;
     cin>>t;
     while(t--){
@@ -29,21 +30,12 @@ int main(){
     */
    int cnt=0;
      vector<int>ans;
-       
+      // int sum=0;
+      int mx=0;
         for(int j=0;j<n;j++){
-         if(j==0 && a[j]==0){
-            cnt++;
-            ans.push_back(a[j]);
-            continue;
-        }
-         ans.push_back(a[j]);
-         sort(ans.begin(),ans.end());
-         int sum=0;
-         for(int i=0;i<ans.size()-1;i++){
-           sum+=a[i];
-         }
-         
-         if(sum==a[ans.size()-1])cnt++;
+         mx=max(a[j],mx);
+        sum+=a[j];
+        if(2*mx==sum)cnt++;
         }
      
      cout<<cnt<<endl;
