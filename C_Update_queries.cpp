@@ -13,22 +13,22 @@ int main(){
   cin>>s;
   vector<int>vc(m,0);
   set<int>d;
+ vector<char>ishi;
   for(int i=0;i<m;i++){
     cin>>vc[i];
-    d.insert(vc[i]-1);
+    d.insert(vc[i]);
   }
 
 
   string h;
   cin>>h;
-  
-  sort(h.begin(),h.end());
+  for(int i=0;i<m;i++)ishi.push_back(h[i]);
+  sort(ishi.begin(),ishi.end());
   int u=0;
   for(auto it:d){
- //   s[*it]=h[u];
-   s[it]=h[u];
+    h[it]=ishi[u];
     u++;
   }
-  cout<<s<<endl;
+  cout<<h<<endl;
     }
 }
