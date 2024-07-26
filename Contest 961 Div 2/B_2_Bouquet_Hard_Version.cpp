@@ -9,7 +9,7 @@ int32_t main(){
     while(t--){
         int n,m;
         cin>>n>>m;
-        vector<pair<int,int>>vc(n,{0,0});
+        vector<pair<int,int>>vc(n);
         
         for(int i=0;i<n;i++)cin>>vc[i].first;
         for(int i=0;i<n;i++)cin>>vc[i].second;
@@ -22,7 +22,6 @@ int32_t main(){
         }
         for(int i=0;i<n-1;i++){
          if(vc[i+1].first-vc[i].first>1)continue;
-          // if(vc[i].first+1 !=vc[i+1].first)continue;
             int curr=m;
             int a=min(curr/vc[i].first,vc[i].second);
             curr-=a*vc[i].first;
@@ -30,6 +29,7 @@ int32_t main(){
                 curr-=b*vc[i+1].first;
             
             int x=min({a,vc[i+1].second-b,curr});
+            curr-=x;
             ans=max(ans,m-curr);
 
         }
