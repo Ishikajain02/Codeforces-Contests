@@ -1,56 +1,55 @@
-#include<iostream>
+#include <iostream>
+#include <string>
 using namespace std;
-int main(){
+
+int main() {
     int t;
-    cin>>t;
-    while(t--){
-        int n,k;
-        cin>>n>>k;
+    cin >> t;
+    while (t--) {
+        int n, k;
+        cin >> n >> k;
         string s;
-        cin>>s;
-        int idx=-1;
-        for(int i=0;i<n;i++){
-            if(s[i]=='*'){
-                idx=i;
-                // cout<<i<<" ";
-                break;
+        cin >> s;
+
+        int first = -1, last = -1;
+
+        // Find the first and last '*' in the string
+        for (int i = 0; i < n; i++) {
+            if (s[i] == '*') {
+                if (first == -1) first = i;
+                last = i;
             }
         }
-        int ans=0;
-        if(idx==-1)cout<<"0"<<endl;
-        else{
-            for(int i=idx;i<n;){
-                if(i==idx){
-                    s[i]='x';
-                    i+=k;
-                    ans++;
-                 //  cout<<i<<" ";
+
+        if (first == last) {
+            // If there's only one '*', we just need to convert it
+            cout << "1" << endl;
+            continue;
+        }
+
+        int ff = 2; // We will at least change the first and last '*'
+        s[first] = 'x';
+        s[last] = 'x';
+
+        int current = first;
+        while (current < last) {
+            int next = min(current + k, last);
+            bool found = false;
+            for (int i = next; i > current; i--) {
+                if (s[i] == '*') {
+                    ff++;
+                    s[i] = 'x';
+                    current = i;
+                    found = true;
+                    break;
                 }
-               else if(s[i]=='*'){
-                s[i]='x';
-                i+=k;
-                ans++;
-                // cout<<i<<" ";
-               }
-               else{
-                  if(s[i-1]=='*'){
-                    s[i-1]='x';
-                  i+=k-1;
-                  ans++;
-                  }
-               //    cout<<i<<" ";
-               }
             }
-        }
-        for(int i=n-1;i>=0;i--){
-            if(s[i]=='*'){
-                s[i]='x';
-                ans++;
+            if (!found) {
                 break;
-                // cout<<i<<" ";
             }
-            if(s[i]=='x')break;
         }
-        cout<<ans<<endl;
+
+        cout << ff << endl;
     }
+    return 0;
 }
