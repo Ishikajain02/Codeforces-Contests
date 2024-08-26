@@ -16,7 +16,6 @@ int32_t main(){
             cout<<i<<" ";
          }
          cout<<endl;
-
         }
         else cout<<"-1"<<endl;
        
