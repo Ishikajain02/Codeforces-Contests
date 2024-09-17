@@ -6,5 +6,6 @@
         "xtree": "cpp",
         "unordered_map": "cpp",
         "deque": "cpp"
-    }
+    },
+    "C_Cpp.default.compilerPath": "C:\\MinGW\\bin\\gcc.exe"
 }
