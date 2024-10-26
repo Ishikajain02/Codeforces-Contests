@@ -5,7 +5,8 @@
         "utility": "cpp",
         "xtree": "cpp",
         "unordered_map": "cpp",
-        "deque": "cpp"
+        "deque": "cpp",
+        "newww": "cpp"
     },
     "C_Cpp.default.compilerPath": "C:\\MinGW\\bin\\gcc.exe"
 }
