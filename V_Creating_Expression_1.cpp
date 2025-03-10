@@ -2,25 +2,34 @@
 #include<vector>
 #define int int64_t
 using namespace std;
-void fn(int n,int i ,vector<int>&vc,bool &found,int sum,int k){
-    if(i>=n)return;
-    if(sum>k)return;
-    if(sum==k){
-        cout<<"YES"<<endl;
-        found=true;
+void fn(bool &found,vector<int>&vc,int i,int x,int sum){
+    if (found) return;
+    if(i>=vc.size()){
+        if(sum==x){
+            found=true;
+            return;
+        }
         return;
     }
-    if(found)return;
-    fn(n,i+1,vc,found,sum+vc[i],k);
-    fn(n,i+1,vc,found,sum-vc[i],k);
+
+    fn(found,vc,i+1,x,sum+vc[i]);
+    
+    fn(found,vc,i+1,x,sum-vc[i]);
 }
 int32_t main(){
-  int n,x;
-  cin>>n>>x;
-  vector<int>vc(n,0);
-  for(int i=0;i<n;i++)cin>>vc[i];
-   int sum=0;
-   bool found=false;
-   fn(n,1,vc,found,sum,x);
-   if(!found)cout<<"NO"<<endl;
+ int n,x;
+ cin>>n>>x;
+ if (n == 0) {
+    cout << (x == 0 ? "YES" : "NO") << endl;
+    return 0;
+}
+
+    vector<int> v(n,0);
+    for(int i=0;i<n;i++)cin>>v[i];
+    int i=0;
+    //using concept of taking and nottaking
+    bool found=false;
+    fn(found,v,i,x,0);
+    if(found)cout<<"YES"<<endl;
+    else cout<<"NO"<<endl;
 }
