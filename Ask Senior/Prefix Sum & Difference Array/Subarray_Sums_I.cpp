@@ -12,19 +12,18 @@ int32_t main(){
     for(int i=0;i<n;i++){
         cin>>vc[i];
     }
-    int ans=0;
+    int pairss=0;
+    int left=0;
     int sum=0;
-     for(int i=0;i<n;i++){
-        sum=0;
-        for(int j=i;j<n;j++){
-            sum+=vc[j];
-            if(sum==acc){
-                ans++;
-            }
-            if(sum>acc){
-                break;
-            }
+    for(int right=0;right<n;right++){
+     sum+=vc[right];
+        while(sum>acc){
+            sum-=vc[left];
+            left++;
         }
-     }
-    cout<<ans<<endl;
+        if(sum==acc){
+            pairss++;
+        }
+    }
+    cout<<pairss<<endl;
 }
